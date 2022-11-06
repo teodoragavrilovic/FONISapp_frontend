@@ -1,8 +1,8 @@
 export interface Task{
-    taskId: number,
+    taskId?: number,
     name: string,
     description: string,
-    responsiblePerson: string, 
+    responsiblePerson: string,
     teamId: number,
     team:{
         teamId: number,

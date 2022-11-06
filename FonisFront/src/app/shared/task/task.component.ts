@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Task} from "../models/task/task.model";
 import {TaskService} from "../services/task/task.service";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogInsertTaskComponent} from "../dialog-insert-task/dialog-insert-task.component";
 
 @Component({
   selector: 'app-task',
@@ -10,7 +12,8 @@ import {TaskService} from "../services/task/task.service";
 export class TaskComponent implements OnInit {
 
   @Input() task!: Task;
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -32,5 +35,11 @@ export class TaskComponent implements OnInit {
   moveDown(task: Task){
     task.boardPosition--;
     this.taskService.updateTask(task).subscribe();
+  }
+  editTask(task: Task){
+    this.dialog.open(DialogInsertTaskComponent, {
+      width: '30%',
+      data: task
+    })
   }
 }

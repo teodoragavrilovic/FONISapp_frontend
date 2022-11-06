@@ -18,4 +18,8 @@ export class TaskService {
   getTasks(): Observable<Task[]>{
     return this.http.get<Task[]>(this.baseUrl);
   }
+  updateTask(task:Task){
+    return this.http.put<any>(this.baseUrl,task);
+  }
+
 }

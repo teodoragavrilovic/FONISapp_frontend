@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TaskService} from "../../../../shared/services/task/task.service";
 import  {Task} from "../../../../shared/models/task/task.model";
-
+import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {DialogInsertTaskComponent} from "../../../../shared/dialog-insert-task/dialog-insert-task.component";
 
 @Component({
   selector: 'app-backlog',
@@ -11,7 +12,7 @@ import  {Task} from "../../../../shared/models/task/task.model";
 
 export class BacklogComponent implements OnInit {
   tasks! : Task[];
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getTasks();
@@ -19,7 +20,26 @@ export class BacklogComponent implements OnInit {
 
   getTasks(){
     this.taskService.getTasks().subscribe( resp =>{
-      this.tasks = resp;
+      this.tasks = this.filterBacklogTasks(resp);
     })
+  }
+  filterBacklogTasks(tasks: Task[]): Task[]{
+    let filtered: Task[] = [];
+    for(let i = 0; i<tasks.length; i++){
+      if(!tasks[i].deleted && tasks[i].backlogPosition != 0 ){
+        filtered.push(tasks[i]);
+      }
+    }
+    console.log("tu");
+    console.log(filtered);
+    return filtered;
+  }
+
+  openTaskDialog(){
+    this.dialog.open(DialogInsertTaskComponent, {
+      width: '30%'
+    }).afterClosed().subscribe(value => {
+      this.getTasks();
+    });
   }
 }

@@ -19,13 +19,13 @@ export class BoardComponent implements OnInit {
   getTasks(){
     this.taskService.getTasks().subscribe( resp =>{
       this.filteredTasks = new Array(4);
-      this.tasks = resp;
+      this.tasks = this.filterBoardTasks(resp);
       for(let i = 0; i<this.columns.length;i++){
-        this.filteredTasks[i] = this.filterTasks(i);
+        this.filteredTasks[i] = this.filterTasksColumn(i);
       }
     })
   }
-   filterTasks(i: number){
+   filterTasksColumn(i: number){
     if(this.tasks === undefined || this.tasks.length === 0)
       return [];
     let t =  this.tasks.filter(task => {
@@ -34,4 +34,13 @@ export class BoardComponent implements OnInit {
     console.log(t);
     return t;
    }
+  filterBoardTasks(tasks: Task[]): Task[]{
+    let filtered: Task[] = [];
+    for(let i = 0; i<tasks.length; i++){
+      if(!tasks[i].deleted && tasks[i].backlogPosition === 0 ){
+        filtered.push(tasks[i]);
+      }
+    }
+    return filtered;
+  }
 }

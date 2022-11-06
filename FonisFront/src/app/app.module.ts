@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import {BacklogModule} from "./components/backlog/backlog.module";
 import {HttpClientModule} from "@angular/common/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+
 
 @NgModule({
   declarations: [
@@ -18,10 +21,9 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     LayoutModule,
     BacklogModule,
-    HttpClientModule
-
-
-
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

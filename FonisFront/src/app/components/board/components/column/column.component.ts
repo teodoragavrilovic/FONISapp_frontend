@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {Task} from "../../../../shared/models/task/task.model";
 
 @Component({
   selector: 'app-column',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ColumnComponent implements OnInit {
   @Input() name: string = '';
-  tasks = ['','','','','','',''];
+  @Input() tasks!: Task[];
 
   constructor() { }
 

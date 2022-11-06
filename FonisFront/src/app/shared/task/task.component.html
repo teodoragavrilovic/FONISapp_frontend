@@ -1,1 +1,11 @@
-<p>task works!</p>
+<div *ngIf = "task">
+  <p>{{task.name}}</p>
+  <p>{{task.responsiblePerson}}</p>
+  <p>{{task.team.name}}</p>
+  <i class="fa-solid fa-arrow-up"></i>
+  <i class="fa-solid fa-arrow-down"></i>
+  <i class="fa-solid fa-arrow-right"></i>
+  <i class="fa-solid fa-trash"></i>
+  <i class="fa-regular fa-square-check"></i>
+  <i class="fa-solid fa-square-check"></i>
+</div>

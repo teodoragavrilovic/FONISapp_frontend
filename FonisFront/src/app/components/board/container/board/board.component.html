@@ -1,4 +1,7 @@
 <h4>Board</h4>
 <div id="board">
-    <app-column *ngFor="let column of columns" [name]="column"></app-column>
+    <app-column *ngFor="let column of columns;let i = index" [name]="column" [tasks]="filteredTasks[i]"></app-column>
+
+</div>
+<div> <button>Arhiviraj</button>
 </div>

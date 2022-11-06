@@ -1,4 +1,5 @@
 <div class="wrapper">
     <h4>Backlog</h4>
-    <app-task *ngFor="let task of tasks"></app-task>
+    <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+    <button>Dodaj zadatak</button>
 </div>

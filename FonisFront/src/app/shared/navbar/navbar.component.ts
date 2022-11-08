@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {DialogDeletedTasksComponent} from "../dialog-deleted-tasks/dialog-deleted-tasks.component";
+import {AuthComponent} from "../../layout/auth/auth.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +11,8 @@ import {DialogDeletedTasksComponent} from "../dialog-deleted-tasks/dialog-delete
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -17,5 +20,11 @@ export class NavbarComponent implements OnInit {
     this.dialog.open(DialogDeletedTasksComponent, {
       width:'30%'
     })
+  }
+  openArchive(){
+    this.router.navigate(["/archive"]);
+  }
+  openUsers(){
+    this.router.navigate(["/users"]);
   }
 }

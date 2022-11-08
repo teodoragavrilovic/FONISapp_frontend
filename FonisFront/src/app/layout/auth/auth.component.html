@@ -1,1 +1,16 @@
-<p>auth works!</p>
+<div class="position-absolute top-50 start-50 translate-middle">
+  <h1>FONIS upravljanje projektima</h1>
+</div>
+<form [formGroup]="LoginForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Korisničko ime</mat-label>
+    <input formControlName="username" matInput type="string" placeholder="">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Lozinka</mat-label>
+    <input formControlName="password" type="password" matInput type="string" placeholder="">
+  </mat-form-field>
+  <div class="example-button-row">
+    <button (click)="authenticate()"> Prijavi se</button>
+  </div>
+</form>

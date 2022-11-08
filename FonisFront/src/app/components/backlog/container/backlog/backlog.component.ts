@@ -49,7 +49,8 @@ export class BacklogComponent implements OnInit {
   }
   openTaskDialog(){
     this.dialog.open(DialogInsertTaskComponent, {
-      width: '30%'
+      width: '30%',
+      panelClass: 'my-custom-dialog-class'
     }).afterClosed().subscribe(value => {
       this.getTasks();
     });

@@ -5,12 +5,14 @@ import { MainComponent } from './main/main.component';
 import { SharedModule } from '../shared/shared.module';
 import { BacklogModule } from '../components/backlog/backlog.module';
 import { BoardModule } from '../components/board/board.module';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
   declarations: [
     AuthComponent,
-    MainComponent
+    MainComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,12 @@
 <div class="wrapper">
+  <div class="head">
     <h4>Backlog</h4>
-    <app-task *ngFor="let task of tasks" [task]="task"></app-task>
     <button (click)="openTaskDialog()">Dodaj zadatak</button>
+  </div>
+  <div class="tasks">
+    <div>
+      <app-task *ngFor="let task of tasks" [task]="task" (moveNext)="moveTaskToBoard($event)"></app-task>
+    </div>
+
+  </div>
 </div>

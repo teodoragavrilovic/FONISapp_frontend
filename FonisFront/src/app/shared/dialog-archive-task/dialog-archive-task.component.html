@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Grupa za arhiviranje</h1>
+<div mat-dialog-content>
+  <form [formGroup]="ArchiveForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Naziv grupe</mat-label>
+      <input formControlName="name" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Opis</mat-label>
+      <input formControlName="description" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Projekat</mat-label>
+      <input formControlName="project" matInput>
+    </mat-form-field>
+  </form>
+</div>
+<div>
+  <button mat-raised-button color="accent" (click)="saveArch()">Sacuvaj</button>
+</div>

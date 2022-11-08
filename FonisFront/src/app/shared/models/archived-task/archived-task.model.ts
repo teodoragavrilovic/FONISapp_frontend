@@ -1,8 +1,8 @@
 export interface ArchivedTask{
-    archivedTaskId: number,
+    archivedTaskId?: number,
     name: string,
     description: string,
-    responsiblePerson: string, 
+    responsiblePerson: string,
     team: string
 
 }

@@ -30,15 +30,35 @@ export class BacklogComponent implements OnInit {
         filtered.push(tasks[i]);
       }
     }
-    console.log("tu");
-    console.log(filtered);
+    filtered = this.orderBacklog(filtered);
     return filtered;
   }
 
+  orderBacklog(tasks: Task[]): Task[]{
+    let a: Task;
+    for(let i = 0; i<tasks.length-1; i++){
+      for(let j = i; j<tasks.length; j++) {
+        if (tasks[i].backlogPosition > tasks[j].backlogPosition) {
+          a = tasks[i];
+          tasks[i] = tasks[j];
+          tasks[j] = a;
+        }
+      }
+    }
+    return tasks;
+  }
   openTaskDialog(){
     this.dialog.open(DialogInsertTaskComponent, {
       width: '30%'
     }).afterClosed().subscribe(value => {
+      this.getTasks();
+    });
+  }
+
+  moveTaskToBoard(task: Task) {
+    task.backlogPosition = 0;
+    task.boardPosition++;
+    this.taskService.updateTask(task).subscribe((resp) => {
       this.getTasks();
     });
   }

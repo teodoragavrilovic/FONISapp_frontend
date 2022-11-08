@@ -1,2 +1,9 @@
-<p>{{name}}</p>
-<app-task *ngFor="let task of tasks" [task]="task"></app-task>
+<div class="head">
+  <h4>{{name}}</h4>
+  <div *ngIf="name === 'Done'">
+    <button (click)="createArchive()">Arhiviraj</button>
+  </div>
+</div>
+<div class="tasks">
+  <app-task *ngFor="let task of tasks" [task]="task" (moveNext)="moveNext($event)"></app-task>
+</div>

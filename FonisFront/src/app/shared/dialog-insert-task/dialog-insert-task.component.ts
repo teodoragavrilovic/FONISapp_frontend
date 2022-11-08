@@ -17,7 +17,7 @@ export class DialogInsertTaskComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private taskService: TaskService,
               private dialogRef: MatDialogRef<DialogInsertTaskComponent>,
-              @Inject(MAT_DIALOG_DATA) public editData: Task,) { }
+              @Inject(MAT_DIALOG_DATA) public editTask: Task,) { }
 
   ngOnInit(): void {
     this.getTeams();
@@ -27,11 +27,11 @@ export class DialogInsertTaskComponent implements OnInit {
       responsiblePerson: ['', Validators.required],
       team: ['', Validators.required]
     });
-    if(this.editData){
-      this.TaskForm.controls['name'].setValue(this.editData.name);
-      this.TaskForm.controls['description'].setValue(this.editData.description);
-      this.TaskForm.controls['responsiblePerson'].setValue(this.editData.responsiblePerson);
-      this.TaskForm.controls['team'].setValue(this.editData.team.teamId);
+    if(this.editTask){
+      this.TaskForm.controls['name'].setValue(this.editTask.name);
+      this.TaskForm.controls['description'].setValue(this.editTask.description);
+      this.TaskForm.controls['responsiblePerson'].setValue(this.editTask.responsiblePerson);
+      this.TaskForm.controls['team'].setValue(this.editTask.team.name);
     }
   }
 
@@ -55,14 +55,15 @@ export class DialogInsertTaskComponent implements OnInit {
       teamId: t,
       team: this.teams.filter(team => team.teamId === t)[0]
     }
-    if(this.editData){
-      task.taskId = this.editData.taskId;
+    if(this.editTask){
+      task.taskId = this.editTask.taskId;
       this.taskService.updateTask(task).subscribe(resp =>{
         this.dialogRef.close();
       })
+    }else {
+      this.taskService.saveTask(task).subscribe(resp => {
+        this.dialogRef.close();
+      })
     }
-    this.taskService.saveTask(task).subscribe(resp =>{
-      this.dialogRef.close();
-    })
   }
 }

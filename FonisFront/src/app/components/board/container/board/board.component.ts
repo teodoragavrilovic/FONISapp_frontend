@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {Task} from "../../../../shared/models/task/task.model";
 import {TaskService} from "../../../../shared/services/task/task.service";
+import {TaskComponent} from "../../../../shared/task/task.component";
+import {ArchivedTask} from "../../../../shared/models/archived-task/archived-task.model";
 
 @Component({
   selector: 'app-board',
@@ -11,6 +13,7 @@ export class BoardComponent implements OnInit {
   columns = ['Ready','In Progress','Finished','Done'];
   tasks! : Task[];
   filteredTasks = new Array(4);
+  @Injectable() taskComponent!: TaskComponent;
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
@@ -42,5 +45,12 @@ export class BoardComponent implements OnInit {
       }
     }
     return filtered;
+  }
+
+  moveTaskToNextColumn(task: Task) {
+    task.boardPosition++;
+    this.taskService.updateTask(task).subscribe((resp) => {
+      this.getTasks();
+    });
   }
 }

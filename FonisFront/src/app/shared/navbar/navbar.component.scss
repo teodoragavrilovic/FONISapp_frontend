@@ -1,0 +1,25 @@
+:host {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px dashed #FFE2C2;
+  margin-bottom: 20px;
+}
+
+div {
+  display: flex;
+  column-gap: 10px;
+
+  p {
+    vertical-align: center;
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+  }
+
+  i {
+    color: #7A2323;
+    font-size: 1.5rem;
+  }
+}

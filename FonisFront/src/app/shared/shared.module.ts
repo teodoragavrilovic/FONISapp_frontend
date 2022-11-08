@@ -9,13 +9,15 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DialogDeletedTasksComponent } from './dialog-deleted-tasks/dialog-deleted-tasks.component';
+import { DialogArchiveTaskComponent } from './dialog-archive-task/dialog-archive-task.component';
+
 @NgModule({
   declarations: [
     NavbarComponent,
     TaskComponent,
     DialogInsertTaskComponent,
     DialogDeletedTasksComponent,
-
+    DialogArchiveTaskComponent,
   ],
   imports: [
     CommonModule,
@@ -24,11 +26,12 @@ import { DialogDeletedTasksComponent } from './dialog-deleted-tasks/dialog-delet
     MatSelectModule,
     MatInputModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+
   ],
   exports: [
     TaskComponent,
-    NavbarComponent
+    NavbarComponent,
   ]
 })
 export class SharedModule { }

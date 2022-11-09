@@ -1,14 +1,7 @@
-:host {
-  width: 80%;
-  box-sizing: border-box;
-  height: 70vh;
-}
-
-.mat-dialog-container{
-  background-color: #FFE2C2 !important;
-  border-left: 1px dashed #FFE2C2;
-  display: flex;
-  flex-direction: row;
+.custom-dialog-container {
+  mat-dialog-container {
+    background-color:  #FFE2C2;
+  }
 }
 mat-form-field{
   width: 100%;
@@ -38,6 +31,3 @@ button:hover {
   background-color: #FFE2C2;
   cursor: pointer;
 }
-
-
-

@@ -1,8 +1,8 @@
 export interface User{
-    userId: number
+    userId?: number
     admin: boolean,
     username: string,
-    password: string,
+    password?: string,
     name: string,
     newPass: boolean,
     positionId: number,

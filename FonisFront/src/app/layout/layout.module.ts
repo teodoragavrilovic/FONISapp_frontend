@@ -11,8 +11,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ArchivedTaskComponentComponent } from './archived-task-component/archived-task-component.component';
 import { ArchivedTasksComponent } from './archived-tasks/archived-tasks.component';
+import {ArchiveModule} from "../components/archive/archive.module";
+import {MembersModule} from "../components/members/members.module";
 
 
 @NgModule({
@@ -20,7 +21,6 @@ import { ArchivedTasksComponent } from './archived-tasks/archived-tasks.componen
     AuthComponent,
     MainComponent,
     UsersComponent,
-    ArchivedTaskComponentComponent,
     ArchivedTasksComponent
   ],
   imports: [
@@ -34,6 +34,8 @@ import { ArchivedTasksComponent } from './archived-tasks/archived-tasks.componen
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    ArchiveModule,
+    MembersModule,
   ]
 })
 export class LayoutModule { }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './layout/main/main.component';
 import {AuthComponent} from "./layout/auth/auth.component";
 import {UsersComponent} from "./layout/users/users.component";
+import {ArchivedTasksComponent} from "./layout/archived-tasks/archived-tasks.component";
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'archive',
-    component: UsersComponent,
+    component: ArchivedTasksComponent,
     //canActivate: [AuthGuard]
   }
 ];

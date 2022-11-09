@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <div class="head">
+    <h4>Članovi</h4>
+  </div>
+  <div class="user">
+    <div>
+      <app-user *ngFor="let user of users" [user]="user"></app-user>
+    </div>
+  </div>
+</div>

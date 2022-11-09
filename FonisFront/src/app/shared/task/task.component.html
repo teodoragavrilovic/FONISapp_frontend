@@ -8,29 +8,33 @@
   <div class="buttons">
     <i
       class="fa-solid fa-arrow-up"
-      *ngIf="task.backlogPosition !== 0"
+      *ngIf="task.backlogPosition !== 0 && task.deleted !== true"
       (click)="moveUp(this.task)"></i>
     <i
       class="fa-solid fa-arrow-down"
-      *ngIf="task.backlogPosition !== 0"
+      *ngIf="task.backlogPosition !== 0 && task.deleted !== true"
       (click)="moveDown(this.task)"></i>
     <i
       class="fa-solid fa-arrow-right"
-      *ngIf="task.boardPosition !== 4"
+      *ngIf="task.boardPosition !== 4 && task.deleted !== true"
       (click)="moveToNext(this.task)"></i>
-    <i class="fa-solid fa-pen-to-square" (click)="editTask(this.task)"></i>
-    <i class="fa-solid fa-trash" (click)="deleteTask(this.task)"></i>
+    <i class="fa-solid fa-pen-to-square"
+       *ngIf="task.deleted !== true"
+       (click)="editTask(this.task)"></i>
+    <i class="fa-solid fa-trash"
+       *ngIf="task.deleted !== true"
+       (click)="deleteTask(this.task)"></i>
     <i
       class="fa-solid fa-arrow-rotate-left"
       *ngIf="task.deleted === true"
       (click)="returnTask(this.task)"></i>
     <i
       class="fa-regular fa-square-check"
-      *ngIf="task.boardPosition === 4 && !checked"
+      *ngIf="task.boardPosition === 4 && !checked && task.deleted !== true"
       (click)="addToArchive(this.task)"></i>
     <i
       class="fa-solid fa-square-check"
-      *ngIf="task.boardPosition === 4 && checked"
+      *ngIf="task.boardPosition === 4 && checked && task.deleted !== true"
       (click)="outFromArchive(this.task)"></i>
   </div>
 </div>

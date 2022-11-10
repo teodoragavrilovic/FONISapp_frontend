@@ -7,4 +7,11 @@
   border-radius: 20px;
   border: 5px solid #7A2323;
 }
+::ng-deep .mat-dialog-container{
+  background-color: #FFE2C2 !important;
+  border-left: 1px dashed #FFE2C2;
+  //display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+}
 

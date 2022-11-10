@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Task} from "../../../../shared/models/task/task.model";
-import {ArchivedTask} from "../../../../shared/models/archived-task/archived-task.model";
 import {Group} from "../../../../shared/models/group/group.model";
 import {GroupService} from "../../../../shared/services/group/group.service";
 
@@ -20,7 +18,6 @@ export class ArchiveComponent implements OnInit {
 
   getGroups(){
     this.groupService.getGroups().subscribe( resp =>{
-      //console.log(resp);
       this.groups = resp;
     })
   }

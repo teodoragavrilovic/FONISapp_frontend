@@ -10,5 +10,6 @@ export interface Task{
     },
     backlogPosition: number,
     boardPosition: number,
-    deleted: boolean
+    deleted: boolean,
+    checked?:boolean
 }

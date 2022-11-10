@@ -3,7 +3,6 @@ import {Task} from "../../../../shared/models/task/task.model";
 import {ArchivedTask} from "../../../../shared/models/archived-task/archived-task.model";
 import {TaskService} from "../../../../shared/services/task/task.service";
 import {TaskComponent} from "../../../../shared/task/task.component";
-import {DialogInsertTaskComponent} from "../../../../shared/dialog-insert-task/dialog-insert-task.component";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogArchiveTaskComponent} from "../../../../shared/dialog-archive-task/dialog-archive-task.component";
 
@@ -19,7 +18,7 @@ export class ColumnComponent implements OnInit {
 
   @Injectable() taskComponent!: TaskComponent;
 
-  archivedTask!: ArchivedTask[];
+  archivedTask: ArchivedTask[] =[];
 
   constructor(private taskService: TaskService, private dialog: MatDialog) { }
 
@@ -31,17 +30,21 @@ export class ColumnComponent implements OnInit {
   }
 
   createArchive(){
-    // for(let i=0;i<this.taskComponent.toArchive.length;i++){
-    //   let archTask: ArchivedTask = {
-    //     name:this.taskComponent.toArchive[i].name,
-    //     description:this.taskComponent.toArchive[i].description,
-    //     responsiblePerson:this.taskComponent.toArchive[i].responsiblePerson,
-    //     team:this.taskComponent.toArchive[i].team.name
-    //   }
-    //   this.archivedTask.push(archTask);
-    // }
+    for(let i=0;i<this.tasks.length;i++) {
+      if (this.tasks[i].checked === true) {
+        let archTask: ArchivedTask = {
+          name: this.tasks[i].name,
+          description: this.tasks[i].description,
+          responsiblePerson: this.tasks[i].responsiblePerson,
+          team: this.tasks[i].team.name
+        }
+        this.archivedTask.push(archTask);
+      }
+    }
+    console.log(this.tasks);
     this.dialog.open(DialogArchiveTaskComponent, {
-      width: '30%'
+      width: '30%',
+      data: this.archivedTask
     });
   }
 }

@@ -30,11 +30,11 @@
       (click)="returnTask(this.task)"></i>
     <i
       class="fa-regular fa-square-check"
-      *ngIf="task.boardPosition === 4 && !checked && task.deleted !== true"
+      *ngIf="task.boardPosition === 4 && !task.checked && task.deleted !== true"
       (click)="addToArchive(this.task)"></i>
     <i
       class="fa-solid fa-square-check"
-      *ngIf="task.boardPosition === 4 && checked && task.deleted !== true"
+      *ngIf="task.boardPosition === 4 && task.checked && task.deleted !== true"
       (click)="outFromArchive(this.task)"></i>
   </div>
 </div>

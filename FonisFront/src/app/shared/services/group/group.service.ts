@@ -16,5 +16,8 @@ export class GroupService {
   getGroups(): Observable<Group[]>{
     return this.http.get<Group[]>(this.baseUrl);
   }
+  saveGroup(group: Group){
+    return this.http.post<any>(this.baseUrl, group);
+  }
 
 }

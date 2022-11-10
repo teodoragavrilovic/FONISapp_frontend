@@ -18,7 +18,7 @@ export class TaskComponent implements OnInit {
   @Output() moveNext = new EventEmitter();
   tasks!: Task[];
   toArchive!: Task[];
-  checked: boolean = false;
+  //public checked: boolean = false;
   constructor(private taskService: TaskService,
               private dialog: MatDialog,
   ) { }
@@ -79,12 +79,12 @@ export class TaskComponent implements OnInit {
     })
   }
   addToArchive(task: Task){
-    this.checked = !this.checked;
-    this.toArchive.push(task);
+    task.checked = !task.checked;
+   // this.toArchive.push(task);
   }
   outFromArchive(task: Task){
-    this.checked = !this.checked;
-    this.toArchive;
+    task.checked = !task.checked;
+    //this.toArchive;
   }
 
 }

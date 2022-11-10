@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../services/user/user.service";
 import {User} from "../models/user/user.model";
-import {Task} from "../models/task/task.model";
-import {MatDialogRef} from "@angular/material/dialog";
+
 
 @Component({
   selector: 'app-dialog-insert-user',
@@ -25,7 +24,6 @@ export class DialogInsertUserComponent implements OnInit {
       name: ['', Validators.required],
       username: ['', Validators.required],
       position: ['', Validators.required],
-      //team: ['', Validators.required]
     });
   }
 

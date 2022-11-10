@@ -13,6 +13,7 @@ import { DialogArchiveTaskComponent } from './dialog-archive-task/dialog-archive
 import { GroupComponent } from './group/group.component';
 import { UserComponent } from './user/user.component';
 import { DialogInsertUserComponent } from './dialog-insert-user/dialog-insert-user.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { DialogInsertUserComponent } from './dialog-insert-user/dialog-insert-us
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatTableModule
   ],
   exports: [
     TaskComponent,

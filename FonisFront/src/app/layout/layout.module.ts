@@ -14,6 +14,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ArchivedTasksComponent } from './archived-tasks/archived-tasks.component';
 import {ArchiveModule} from "../components/archive/archive.module";
 import {MembersModule} from "../components/members/members.module";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {MembersModule} from "../components/members/members.module";
     FormsModule,
     ArchiveModule,
     MembersModule,
+    MatTableModule
   ]
 })
 export class LayoutModule { }

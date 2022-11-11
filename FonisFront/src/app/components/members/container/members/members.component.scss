@@ -1,5 +1,36 @@
+:host {
+  box-sizing: border-box;
+  width: 30%;
+  margin: 25px;
+}
+
 .container{
   display: flex;
   flex-direction: row;
   width: 40%;
+}
+
+.wrapper {
+  height: 77vh;
+  padding: 0px 15px;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.user {
+  background-color: #201E1E;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 100%;
+  overflow-y: auto;
+  border-radius: 20px;
+  height: 100%;
 }

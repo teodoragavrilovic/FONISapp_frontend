@@ -1,9 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ArchivedTask} from "../models/archived-task/archived-task.model";
 import {MatTableDataSource} from "@angular/material/table";
-import {Task} from "../models/task/task.model";
 import {Group} from "../models/group/group.model";
 import {GroupService} from "../services/group/group.service";
 
@@ -17,6 +16,7 @@ export class DialogArchiveTaskComponent implements OnInit {
   ArchiveForm!: FormGroup;
   constructor(private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: ArchivedTask[],
+              private dialogRef: MatDialogRef<DialogArchiveTaskComponent>,
               private groupService: GroupService) { }
 
   displayedColumns: string[] = ['name','description', 'responsiblePerson','team'];
@@ -39,7 +39,7 @@ export class DialogArchiveTaskComponent implements OnInit {
     };
     console.log(group);
     this.groupService.saveGroup(group).subscribe();
-      //     this.dialogRef.close();
+    this.dialogRef.close();
     // if(this.editTask){
     //   task.taskId = this.editTask.taskId;
     //   this.taskService.updateTask(task).subscribe(resp =>{

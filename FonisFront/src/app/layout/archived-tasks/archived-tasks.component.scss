@@ -10,6 +10,10 @@
   width: 100%;
 }
 
+#details {
+  padding-top: 90px;
+}
+
 .wrapper {
   height: 77vh;
 }
@@ -34,6 +38,37 @@
   border-radius: 20px;
   height: 100%;
   color: #7A2323;
+}
+
+mat-form-field{
+  width: 100%;
+  padding: 0px 15px;
+  background-color:  #FFE2C2;
+  box-sizing:border-box;
+  overflow-y: auto;
+  border-radius: 20px;
+  border: 5px solid #7A2323;
+}
+
+.mat-table{
+  background-color: #FFE2C2;
+  border: 5px solid #7A2323 ;
+  padding: 0px 15px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.mat-column-name{
+  width: 20%;
+}
+.mat-column-description {
+  width: 30%
+}
+.mat-column-responsiblePerson{
+  width: 40%;
+}
+.mat-column-team{
+  width: 10%;
 }
 
 button {

@@ -1,5 +1,5 @@
-<app-navbar></app-navbar>
+<app-navbar (refresh)="getTasks()"></app-navbar>
 <div id="app">
-    <app-backlog></app-backlog>
-    <app-board></app-board>
+    <app-backlog [tasks]="backlogTasks" (refresh)="getTasks()"></app-backlog>
+    <app-board [tasks]="boardTasks" (refresh)="getTasks()"></app-board>
 </div>

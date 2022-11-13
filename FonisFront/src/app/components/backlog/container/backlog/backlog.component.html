@@ -5,7 +5,7 @@
   </div>
   <div class="tasks">
     <div>
-      <app-task *ngFor="let task of tasks" [task]="task" (moveNext)="moveTaskToBoard($event)"></app-task>
+      <app-task *ngFor="let task of tasks" [task]="task" (moveNext)="moveTaskToBoard($event)" (refresh)="refreshList()" (delete)="refreshList()"></app-task>
     </div>
 
   </div>

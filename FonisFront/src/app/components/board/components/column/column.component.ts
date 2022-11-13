@@ -15,6 +15,8 @@ export class ColumnComponent implements OnInit {
   @Input() name: string = '';
   @Input() tasks!: Task[];
   @Output() moveTaskToNextColumn = new EventEmitter();
+  @Output() refresh = new EventEmitter();
+
 
   @Injectable() taskComponent!: TaskComponent;
 
@@ -45,6 +47,11 @@ export class ColumnComponent implements OnInit {
     this.dialog.open(DialogArchiveTaskComponent, {
       width: '30%',
       data: this.archivedTask
-    });
+    }).afterClosed().subscribe(value => {
+      this.archivedTask = [];
+    })
   }
+
+  refreshList() {
+    this.refresh.emit()  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {TaskService} from "../../../../shared/services/task/task.service";
 import  {Task} from "../../../../shared/models/task/task.model";
 import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -10,49 +10,36 @@ import {DialogInsertTaskComponent} from "../../../../shared/dialog-insert-task/d
   styleUrls: ['./backlog.component.scss']
 })
 
-export class BacklogComponent implements OnInit {
-  tasks! : Task[];
+export class BacklogComponent implements OnChanges {
+  @Input() tasks! : Task[];
+  @Output() refresh = new EventEmitter();
   constructor(private taskService: TaskService, private dialog: MatDialog) { }
 
-  ngOnInit(): void {
-    this.getTasks();
-  }
-
-  getTasks(){
-    this.taskService.getTasks().subscribe( resp =>{
-      this.tasks = this.filterBacklogTasks(resp);
-    })
-  }
-  filterBacklogTasks(tasks: Task[]): Task[]{
-    let filtered: Task[] = [];
-    for(let i = 0; i<tasks.length; i++){
-      if(!tasks[i].deleted && tasks[i].backlogPosition != 0 ){
-        filtered.push(tasks[i]);
-      }
+  ngOnChanges(): void {
+    if(this.tasks && this.tasks.length > 0) {
+      this.orderBacklog();
     }
-    filtered = this.orderBacklog(filtered);
-    return filtered;
   }
 
-  orderBacklog(tasks: Task[]): Task[]{
+  orderBacklog() {
     let a: Task;
-    for(let i = 0; i<tasks.length-1; i++){
-      for(let j = i; j<tasks.length; j++) {
-        if (tasks[i].backlogPosition > tasks[j].backlogPosition) {
-          a = tasks[i];
-          tasks[i] = tasks[j];
-          tasks[j] = a;
+    console.log(this.tasks)
+    for(let i = 0; i<this.tasks.length-1; i++){
+      for(let j = i; j<this.tasks.length; j++) {
+        if (this.tasks[i].backlogPosition > this.tasks[j].backlogPosition) {
+          a = this.tasks[i];
+          this.tasks[i] = this.tasks[j];
+          this.tasks[j] = a;
         }
       }
     }
-    return tasks;
   }
   openTaskDialog(){
     this.dialog.open(DialogInsertTaskComponent, {
       width: '30%',
       panelClass: 'my-custom-dialog-class'
     }).afterClosed().subscribe(value => {
-      this.getTasks();
+      this.refresh.emit();
     });
   }
 
@@ -60,7 +47,11 @@ export class BacklogComponent implements OnInit {
     task.backlogPosition = 0;
     task.boardPosition++;
     this.taskService.updateTask(task).subscribe((resp) => {
-      this.getTasks();
+      this.refresh.emit();
     });
+  }
+
+  refreshList() {
+    this.refresh.emit();
   }
 }

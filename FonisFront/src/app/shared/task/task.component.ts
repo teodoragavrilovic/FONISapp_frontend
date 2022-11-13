@@ -3,6 +3,7 @@ import {Task} from "../models/task/task.model";
 import {TaskService} from "../services/task/task.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogInsertTaskComponent} from "../dialog-insert-task/dialog-insert-task.component";
+import {outputAst} from "@angular/compiler";
 
 
 
@@ -16,6 +17,9 @@ export class TaskComponent implements OnInit {
 
   @Input() task!: Task;
   @Output() moveNext = new EventEmitter();
+  @Output() delete = new EventEmitter();
+  @Output() recover = new EventEmitter();
+  @Output() refresh = new EventEmitter();
   tasks!: Task[];
   toArchive!: Task[];
   //public checked: boolean = false;
@@ -47,11 +51,15 @@ export class TaskComponent implements OnInit {
   }
   deleteTask(task: Task){
     task.deleted = true;
-    this.taskService.updateTask(task).subscribe();
+    this.taskService.updateTask(task).subscribe((resp) => {
+      this.delete.emit();
+    });
   }
   returnTask(task: Task){
     task.deleted = false;
-    this.taskService.updateTask(task).subscribe();
+    this.taskService.updateTask(task).subscribe(()=>{
+      this.recover.emit();
+    });
   }
   moveUp(task: Task){
     let upTask: Task;
@@ -66,11 +74,14 @@ export class TaskComponent implements OnInit {
           return;
         }
       }
+      this.refresh.emit();
     }
   }
   moveDown(task: Task){
     task.backlogPosition++;
-    this.taskService.updateTask(task).subscribe();
+    this.taskService.updateTask(task).subscribe((resp) => {
+      this.refresh.emit();
+    });
   }
   editTask(task: Task){
     this.dialog.open(DialogInsertTaskComponent, {

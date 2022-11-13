@@ -3,6 +3,7 @@
       *ngFor="let column of columns;let i = index"
       [name]="column" [tasks]="filteredTasks[i]"
       (moveTaskToNextColumn)="moveTaskToNextColumn($event)"
+      (refresh)="refreshList()"
     ></app-column>
 
 </div>

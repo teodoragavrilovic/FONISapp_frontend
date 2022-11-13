@@ -1,6 +1,6 @@
 <div class="tasks">
   <h4>Obrisani</h4>
-  <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+  <app-task *ngFor="let task of tasks" [task]="task" (recover)="getTasks()"></app-task>
 </div>
 
 
